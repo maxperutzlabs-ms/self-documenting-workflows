@@ -21,7 +21,7 @@ We invite you to open an issue or start a discussion to share how your facility 
 > (!) Work In Progress
 
 - [Project Directory Structure](#project-structure): Standardized folder layouts and naming logic
-- Input Files and Search: FASTA management and raw file conventions
+- [Input Files and Search](#input-files-and-search): FASTA management and raw file conventions
 - Data Analysis: Python frameworks for automated report building
 - Reporting and Documentation: Core principles for reporting experimental intent
 - Facility Tools: Automation scripts and utilities
@@ -48,3 +48,40 @@ project-directory/
 ```
 
 To find out more about our conventions and detailed folder-naming logic, see the [Project Structure Guidelines](docs/project-structure.md).
+
+To simplify setup, our **Project-management GUI tool** provides a one-click workflow to automatically generate the standard directory structure according to our conventions.
+
+## Input Files and Search
+
+Maintaining consistency across projects, transparency, and long-term reproducibility depends on strict control over protein sequence databases, raw data tracking, and standardized processing parameters.
+
+### FASTA Database Management
+
+We maintain a centralized collection of reference FASTA files to ensure consistency across search runs:
+
+- **Acquisition & Naming**: Standardized guidelines govern database retrieval, versioning, and naming conventions.
+- **Custom & Contaminant Sequences**: Guidelines exist for formatting custom sequence headers. A centralized facility contaminants database is maintained directly on [GitHub](https://github.com/maxperutzlabs-ms/perutz-ms-contaminants).
+
+Refer to the [FASTA guidelines](docs/fasta-guidelines.md) for database acquisition protocols, header conventions, and validation steps.
+
+### Raw File Metadata & Archival
+
+To avoid redundant storage of raw data while maintaining complete traceability:
+
+- **Server Archival**: Instrument .raw files are  backed up to a central server, with checksums recorded and validated after transfer.
+- **Independent Archiving**: Project folders are archived independently of the primary raw file repository. To avoid raw data duplication, raw files are omitted from the project archive.
+- **Metadata Table**: An automatically generated metadata table is placed in `data/raw/`, recording the exact raw files used in the project and their order of acquisition.
+
+### Processing Workflows & Search Engines
+
+Default parameter files for supported search engines (e.g., FragPipe, Spectronaut) are stored in a central repository location:
+
+- **Standard Settings**: All data processing must use these centralized default workflow configurations as a baseline.
+- **Minimized Documentation**: By relying on standardized workflows, we reduce the burden of explicit documentation. Operators only need to document *deviations* from facility defaults in the project `README.md`.
+
+### Project-management GUI tool
+
+To simplify project setup, our project-management GUI tool provides one-click workflows to:
+
+- Retrieve and concatenate FASTA files from the centralized repository and the contaminants database from GitHub (including the automated addition of reversed decoy entries).
+- Generate the required raw file metadata table within `data/raw/`.
