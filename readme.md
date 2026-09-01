@@ -12,7 +12,7 @@ Mass spectrometry projects live far longer than a single analysis phase. In our 
 
 Rather than relying on active, manual hand-overs, we embed self-documentation directly into our project architecture. By standardizing folder structures, sequence database tracking, post-processing notebooks, and reporting any project can be revisited or resumed by any team member at any point.
 
-Here we share some ofour facility's internal guidelines, conventions, and tools. These represent our current practices, offered as a starting point for discussion and adaptation rather than rigid universal rules.
+Here we share some of **our facility's internal** guidelines, conventions, and tools. These represent our current practices, offered as a starting point for discussion and adaptation rather than rigid universal rules.
 
 We invite you to open an issue or start a discussion to share how your facility or research group manages project continuity.
 
@@ -22,7 +22,7 @@ We invite you to open an issue or start a discussion to share how your facility 
 
 - [Project Directory Structure](#project-structure): Standardized folder layouts and naming logic
 - [Input Files and Search](#input-files-and-search): FASTA management and raw file conventions
-- Data Analysis: Python frameworks for automated report building
+- [Data Analysis](#data-analysis): Notebook based workflows for post-processing, quality control, and reporting
 - Reporting and Documentation: Core principles for reporting experimental intent
 - Facility Tools: Automation scripts and utilities
 
@@ -85,3 +85,23 @@ To simplify project setup, our project-management GUI tool provides one-click wo
 
 - Retrieve and concatenate FASTA files from the centralized repository and the contaminants database from GitHub (including the automated addition of reversed decoy entries).
 - Generate the required raw file metadata table within `data/raw/`.
+
+## Data Analysis
+
+We use standardized, template-driven Jupyter Notebooks for data analysis rather than writing custom processing code from scratch for every project or relying on standalone GUI tools.
+
+### Template-Driven Workflow
+
+Analysis notebooks are built around a single `config` block located at the very top of each file:
+
+- **Simple Configuration**: For standard runs, operators only need to modify parameters in the top `config` block—making execution as straightforward as setting parameters in a GUI.
+- **Full Flexibility**: Beneath the configuration block, the entire processing pipeline remains fully accessible code. Operators can intervene at any step, adjust algorithms, or append custom exploratory scripts when non-standard processing is required.
+- **Available Templates**: We maintain dedicated notebook templates for common mass spectrometry workflows, including protein-level LFQ (DDA and DIA), pilot experiments, PTM site-level analysis, and TMT quantification.
+
+### Core Facility Libraries
+
+Our notebook templates rely on custom, in-house Python libraries to enforce data standardization, robust post-processing, quality control, and consistent output formatting:
+
+- [**msreport**](https://github.com/hollenstein/msreport): Converts primary search engine outputs (e.g., FragPipe, Spectronaut) into standardized tables and provides core algorithms for aggregation, normalization, imputation, statistical testing, and QC visualization.
+- [**xlsxreport**](https://github.com/hollenstein/xlsxreport): Programmatically transforms data matrices into well-formatted, multi-tab Excel workbooks ready for end-user delivery or use as supplementary tables.
+- [**profasta**](https://github.com/hollenstein/profasta): Utility library for importing, manipulating, and validating sequence entries and headers across FASTA databases.
