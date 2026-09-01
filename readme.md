@@ -23,7 +23,7 @@ We invite you to open an issue or start a discussion to share how your facility 
 - [Project Directory Structure](#project-structure): Standardized folder layouts and naming logic
 - [Input Files and Search](#input-files-and-search): FASTA management and raw file conventions
 - [Data Analysis](#data-analysis): Notebook based workflows for post-processing, quality control, and reporting
-- Reporting and Documentation: Core principles for reporting experimental intent
+- [Reporting and Documentation](#reporting-and-documentation): Guidelines for writing reports and documentation
 - Facility Tools: Automation scripts and utilities
 
 ## Project Structure
@@ -105,3 +105,26 @@ Our notebook templates rely on custom, in-house Python libraries to enforce data
 - [**msreport**](https://github.com/hollenstein/msreport): Converts primary search engine outputs (e.g., FragPipe, Spectronaut) into standardized tables and provides core algorithms for aggregation, normalization, imputation, statistical testing, and QC visualization.
 - [**xlsxreport**](https://github.com/hollenstein/xlsxreport): Programmatically transforms data matrices into well-formatted, multi-tab Excel workbooks ready for end-user delivery or use as supplementary tables.
 - [**profasta**](https://github.com/hollenstein/profasta): Utility library for importing, manipulating, and validating sequence entries and headers across FASTA databases.
+
+## Reporting and Documentation
+
+An analysis report should enable anyone outside the project to understand the experimental intent, verify run quality, and evaluate conclusions independently without needing to contact the operator.
+
+### Data Inspection and Reporting Workflow
+
+1. **Initial Notes in `README.md`**: Operators document preliminary observations, rationale, and notes directly in the project `README.md` during data inspection, recording any immediate insights, questions, or hypotheses that arise.
+2. **QC Evaluation & Sanity Checks**:
+  - Inspect all notebook-generated QC plots. Document any unexpected deviations and investigate root causes if unclear.
+  - Confirm that overall technical quality is sufficient to address the experimental question.
+  - Perform experimental sanity checks (e.g., presence of expected interactors, positive controls, or quantitative trends).
+3. **Excel Deliverable**: Generate the final report in `reports/` using the automatically created Excel file from `xlsxreport`, QC plots from the notebook, and a narrative summary of the analysis.
+
+### Excel Report 
+
+The generated Excel report serves as the primary deliverable for clients and collaborators, providing a self-contained record of the analysis. Coupling the experimental rationale and observations directly with the quantitative data tables ensures long-term context, making it easy to understand project intent when re-evaluating the data later. 
+
+The narrative documentation in the Excel **Overview Tab** must contain the following sections:
+
+- **Question & Experimental Design**: The core objective of the experiment and the analytical strategy used.
+- **Special Procedures** *(Include only if applicable)*: Non-standard sample handling, search settings, or processing steps.
+- **Results & Observations**: Primary findings, an evaluation of data quality and consistency with expected trends, and notes on technical issues. Includes main takeaways for the collaborator and optional recommendations for follow-up analyses.
