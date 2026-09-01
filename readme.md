@@ -10,7 +10,7 @@ Mass spectrometry projects live far longer than a single analysis phase. In our 
 2) **Operator transitions:** Transferring ongoing or completed projects between team members without losing context.
 3) **Information fragmentation:** Relying on memory or scattered notes for search parameters, custom reference databases, and analysis decisions.
 
-Rather than relying on active, manual hand-overs, we embed self-documentation directly into our project architecture. By standardizing folder structures, sequence database tracking, post-processing notebooks, and reporting any project can be revisited or resumed by any team member at any point.
+Rather than relying on active, manual hand-overs, we embed self-documentation directly into our project architecture. By standardizing folder structures, sequence database tracking, post-processing notebooks, and reporting, any project can be revisited or resumed by any team member at any point.
 
 Here we share some of **our facility's internal** guidelines, conventions, and tools. These represent our current practices, offered as a starting point for discussion and adaptation rather than rigid universal rules.
 
@@ -18,13 +18,10 @@ We invite you to open an issue or start a discussion to share how your facility 
 
 ## Overview
 
-> (!) Work In Progress
-
 - [Project Directory Structure](#project-structure): Standardized folder layouts and naming logic
 - [Input Files and Search](#input-files-and-search): FASTA management and raw file conventions
 - [Data Analysis](#data-analysis): Notebook based workflows for post-processing, quality control, and reporting
 - [Reporting and Documentation](#reporting-and-documentation): Guidelines for writing reports and documentation
-- Facility Tools: Automation scripts and utilities
 
 ## Project Structure
 
@@ -68,7 +65,7 @@ Refer to the [FASTA guidelines](docs/fasta-guidelines.md) for database acquisiti
 
 To avoid redundant storage of raw data while maintaining complete traceability:
 
-- **Server Archival**: Instrument .raw files are  backed up to a central server, with checksums recorded and validated after transfer.
+- **Server Archival**: Instrument .raw files are backed up to a central server, with checksums recorded and validated after transfer.
 - **Independent Archiving**: Project folders are archived independently of the primary raw file repository. To avoid raw data duplication, raw files are omitted from the project archive.
 - **Metadata Table**: An automatically generated metadata table is placed in `data/raw/`, recording the exact raw files used in the project and their order of acquisition.
 
