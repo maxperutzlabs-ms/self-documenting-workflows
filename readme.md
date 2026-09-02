@@ -22,6 +22,7 @@ We invite you to open an issue or start a discussion to share how your facility 
 - [Input Files and Search](#input-files-and-search): FASTA management and raw file conventions
 - [Data Analysis](#data-analysis): Notebook based workflows for post-processing, quality control, and reporting
 - [Reporting and Documentation](#reporting-and-documentation): Guidelines for writing reports and documentation
+- [Examples of Internal Tools](#examples-of-internal-tools): Tools we are using that automate repetitive setup and reporting tasks
 
 ## Project Structure
 
@@ -125,3 +126,21 @@ The narrative documentation in the Excel **Overview Tab** must contain the follo
 - **Question & Experimental Design**: The core objective of the experiment and the analytical strategy used.
 - **Special Procedures** *(Include only if applicable)*: Non-standard sample handling, search settings, or processing steps.
 - **Results & Observations**: Primary findings, an evaluation of data quality and consistency with expected trends, and notes on technical issues. Includes main takeaways for the collaborator and optional recommendations for follow-up analyses.
+
+
+## Examples of Internal Tools
+
+We operationalize our guidelines with targeted tools that automate repetitive setup and reporting tasks. Below are some examples of the tools we use in our facility.
+
+### Project Creation Tool
+
+Automatically creates a standardized project directory structure.
+
+<img src="docs/assets/project-structure-creation-demo.gif" width="600">
+
+### TIC HTML Report
+
+Interactive HTML report for inspecting TIC traces from raw MS data, generated using our `rawtrace-qc` tool (currently in development).
+
+
+<img src="docs/assets/tic-report_2-trace-example.png" width="600">
