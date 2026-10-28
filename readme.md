@@ -41,6 +41,7 @@ project-directory/
 ├─ notebooks          # Notebooks (Jupyter notebooks, R Markdown, etc.)
 ├─ src                # Optional: Code shared between notebooks
 ├─ reports            # Final deliverables for users (HTML reports, PDFs, etc.)
+├─ publication        # Files assembled for a manuscript or publication
 ├─ references         # Optional: Material too extensive for readme
 └─ README.md
 ```
