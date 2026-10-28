@@ -105,6 +105,18 @@ flowchart TB
 
 ## Guidelines
 
+### Software Configuration Files (`data/external/`)
+
+In addition to external reference datasets, store any software configuration files, export schemas, or workflow parameter files required for your run directly in `data/external/`.
+
+To keep the directory clean, and make the purpose of each configuration clear, group tool-specific configurations into dedicated subfolders:
+
+* **Example:** `data/external/spectronaut-config/` (containing custom `.prop` settings, or report schema `.rs` files)
+* **Example:** `data/external/fragpipe-config/` (containing `.workflow` or `.properties` files)
+
+Keeping these files alongside the data ensures that search engine settings can be retrieved and audited without cluttering the project root.
+
+
 ### Raw and processed data are immutable
 
 All content of the `data/` directory should be treated as immutable. If multiple versions of processed data are necessary for analysis, save them separately.
